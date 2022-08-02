@@ -2,6 +2,8 @@ package com.rank.customerranker.model;
 
 import com.rank.customerranker.util.ContentType;
 
+import java.sql.Timestamp;
+
 public class Content {
 
     private ContentType contentType;
@@ -9,6 +11,8 @@ public class Content {
     private long contentLength;
 
     private String contentName;
+
+    private Timestamp createdAt;
 
     public ContentType getContentType() {
         return contentType;
