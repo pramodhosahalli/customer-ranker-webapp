@@ -1,6 +1,7 @@
 package com.rank.customerranker.entity;
 
 import com.rank.customerranker.util.ContentType;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,6 +12,7 @@ import java.sql.Timestamp;
 @Setter
 @Entity
 @Table(name = "content_info")
+@AllArgsConstructor
 public class Content {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,6 +26,9 @@ public class Content {
 
     @Column(name = "content_name")
     private String contentName;
+
+    @Column
+    private String user_id;
 
     @Column(name= "created_at")
     private Timestamp createdAt;
