@@ -7,16 +7,20 @@ import com.amazon.app.mockers.CustomerMocker;
 import com.amazon.app.model.Content;
 import com.amazon.app.model.Customer;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class CheckPointController {
 
-    private static Customer customer = CustomerMocker.getCustomerList().get(0);
+    private static List<Customer> customerList = CustomerMocker.getCustomerList();
 
-    @RequestMapping("/")
-    public String home(Map<String, Object> model) {
-        model.put("rank", "18");
+    @RequestMapping("/{userId}")
+    public String home(Map<String, Object> model, @PathVariable String userId) {
+
+        Customer customer = customerList.stream().filter(c->c.getCustomerName().equals(userId)).findFirst().get();
+        model.put("rank", getUserRank(userId));
+        model.put("username", customer.getCustomerName());
         model.put("timespan", "JULY 2022");
         model.put("followers", customer.getFollowers());
 
@@ -51,18 +55,11 @@ public class CheckPointController {
 
     @RequestMapping("/leaderboard")
     public String leaderboard(Map<String, Object> model) {
-
-        List<Customer> customerListData = CustomerMocker.getCustomerList();
-        customerListData.sort(new Comparator<Customer>() {
-            @Override
-            public int compare(Customer o1, Customer o2) {
-                return (int)((long)o2.getScores() - (long) o1.getScores());
-            }
-        });
-
-        model.put("topRankedCustomers", customerListData);
+        getCustomersSortedByScored();
+        model.put("topRankedCustomers", customerList);
         return "tables-basic";
     }
+
 
     @RequestMapping("/account_settings_account")
     public String account(Map<String, Object> model) {
@@ -77,6 +74,27 @@ public class CheckPointController {
     @RequestMapping("/account_settings_notify")
     public String notify(Map<String, Object> model) {
         return "pages-account-settings-notifications";
+    }
+
+    private int getUserRank(String userId) {
+        int rank = 1;
+       getCustomersSortedByScored();
+        for (Customer c: customerList) {
+            if (c.getCustomerName().equals(userId)) {
+                break;
+            }
+            rank++;
+        }
+        return rank;
+    }
+
+    private void getCustomersSortedByScored() {
+        customerList.sort(new Comparator<Customer>() {
+            @Override
+            public int compare(Customer o1, Customer o2) {
+                return (int)((long)o2.getScores() - (long) o1.getScores());
+            }
+        });
     }
 
 }
