@@ -212,7 +212,7 @@
 			<ul class="menu-inner py-1">
 				<!-- Dashboard -->
 				<li class="menu-item active">
-					<a href="/" class="menu-link">
+					<a href="/${username}" class="menu-link">
 						<i class="menu-icon tf-icons bx bx-home-circle"></i>
 						<div data-i18n="Analytics">Dashboard</div>
 					</a>
@@ -220,7 +220,7 @@
 
 				<!-- Tables -->
 				<li class="menu-item">
-					<a href="/leaderboard" class="menu-link">
+					<a href="/leaderboard/${username}" class="menu-link">
 						<i class="menu-icon tf-icons bx bx-table"></i>
 						<div data-i18n="Tables">Leaderboard Results</div>
 					</a>
@@ -232,17 +232,17 @@
 					</a>
 					<ul class="menu-sub">
 						<li class="menu-item">
-							<a href="/account_settings_account" class="menu-link">
+							<a href="/account_settings_account/${username}" class="menu-link">
 								<div data-i18n="Account">Account</div>
 							</a>
 						</li>
 						<li class="menu-item">
-							<a href="/account_settings_notify" class="menu-link">
+							<a href="/account_settings_notify/${username}" class="menu-link">
 								<div data-i18n="Notifications">Notifications</div>
 							</a>
 						</li>
 						<li class="menu-item">
-							<a href="/account_settings_conn" class="menu-link">
+							<a href="/account_settings_conn/${username}" class="menu-link">
 								<div data-i18n="Connections">Connections</div>
 							</a>
 						</li>
@@ -400,7 +400,7 @@
 										<div class="card-body">
 											<h5 class="card-title text-primary">Congratulations ${username}! 🎉</h5>
 											<p class="mb-4">
-												You have done <span class="fw-bold">72%</span> more sales today. Check
+												You have done <span class="fw-bold">14%</span> more Usage. Check
 												your new badge in
 												your profile.
 											</p>
@@ -431,12 +431,10 @@
 											<div class="d-flex justify-content-between flex-sm-row flex-column gap-3">
 												<div class="d-flex flex-sm-column flex-row align-items-start justify-content-between">
 													<div class="card-title">
-														<h5 class="text-nowrap mb-2 text-primary">&nbsp;&nbsp;&nbsp;Rank</h5>
+														<h5 class="text-nowrap mb-2 text-primary">&nbsp;Rank</h5>
 														<div class="quiz-medal">
-															<div class="quiz-medal__circle quiz-medal__circle--gold">
-                                                                <span>
-                                                                  ${rank}&nbsp;
-                                                                </span>
+															<div class="quiz-medal__circle quiz-medal__circle--gold" style="font-size: 24px;">
+                                                                <span style="font-size: 1.25rem;">${rank}</span>
 															</div>
 															<div class="quiz-medal__ribbon quiz-medal__ribbon--left"></div>
 															<div class="quiz-medal__ribbon quiz-medal__ribbon--right"></div>
@@ -495,8 +493,8 @@
 												<c:forEach items="${languageGroupedContents}" var="entry">
 													<li class="d-flex mb-4 pb-1">
 														<div class="avatar flex-shrink-0 me-3">
-                                                        <span class="avatar-initial rounded bg-label-warning"><i
-																class="bx bx-closet"></i></span>
+															<img src="../assets/img/icons/unicons/paypal.png" alt="User"
+																 class="rounded"/>
 														</div>
 														<div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
 															<div class="me-2">
@@ -518,7 +516,7 @@
 																<small class="fw-semibold">${entry.value}
 																	<small class="text-success fw-semibold">
 																		<i class="bx bx-chevron-up"></i>
-																		12.9%
+																		3.9%
 																	</small>
 																</small>
 															</div>
@@ -537,11 +535,7 @@
 										<div class="card-header d-flex align-items-center justify-content-between pb-0">
 										<div class="card-title mb-0">
 											<h5 class="m-0 me-2 text-primary">Last 6 Months Summary</h5>
-											<small class="text-muted">${totalSongsListened} Songs Listened</small>
-											<small class="text-success fw-semibold">
-												<i class="bx bx-chevron-up"></i>
-												42.9%
-											</small>
+											<small class="text-muted">${totalSongsListened * 7} Songs Listened</small>
 										</div>
 										</div>
 										<div class="card-body px-0">

@@ -53,26 +53,34 @@ public class CheckPointController {
         return "index";
     }
 
-    @RequestMapping("/leaderboard")
-    public String leaderboard(Map<String, Object> model) {
+    @RequestMapping("/leaderboard/{userId}")
+    public String leaderboard(Map<String, Object> model,@PathVariable String userId) {
         getCustomersSortedByScored();
+        Customer customer = customerList.stream().filter(c->c.getCustomerName().equals(userId)).findFirst().get();
+        model.put("username", customer.getCustomerName());
         model.put("topRankedCustomers", customerList);
         return "tables-basic";
     }
 
 
-    @RequestMapping("/account_settings_account")
-    public String account(Map<String, Object> model) {
+    @RequestMapping("/account_settings_account/{userId}")
+    public String account(Map<String, Object> model,@PathVariable String userId) {
+        Customer customer = customerList.stream().filter(c->c.getCustomerName().equals(userId)).findFirst().get();
+        model.put("username", customer.getCustomerName());
         return "pages-account-settings-account";
     }
 
-    @RequestMapping("/account_settings_conn")
-    public String conn(Map<String, Object> model) {
+    @RequestMapping("/account_settings_conn/{userId}")
+    public String conn(Map<String, Object> model,@PathVariable String userId) {
+        Customer customer = customerList.stream().filter(c->c.getCustomerName().equals(userId)).findFirst().get();
+        model.put("username", customer.getCustomerName());
         return "pages-account-settings-connections";
     }
 
-    @RequestMapping("/account_settings_notify")
-    public String notify(Map<String, Object> model) {
+    @RequestMapping("/account_settings_notify/{userId}")
+    public String notify(Map<String, Object> model,@PathVariable String userId) {
+        Customer customer = customerList.stream().filter(c->c.getCustomerName().equals(userId)).findFirst().get();
+        model.put("username", customer.getCustomerName());
         return "pages-account-settings-notifications";
     }
 

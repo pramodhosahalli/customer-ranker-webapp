@@ -144,7 +144,7 @@
             <ul class="menu-inner py-1">
                 <!-- Dashboard -->
                 <li class="menu-item">
-                    <a href="/" class="menu-link">
+                    <a href="/${username}" class="menu-link">
                         <i class="menu-icon tf-icons bx bx-home-circle"></i>
                         <div data-i18n="Analytics">Dashboard</div>
                     </a>
@@ -152,7 +152,7 @@
 
                 <!-- Tables -->
                 <li class="menu-item active">
-                    <a href="/leaderboard" class="menu-link">
+                    <a href="/leaderboard/${username}" class="menu-link">
                         <i class="menu-icon tf-icons bx bx-table"></i>
                         <div data-i18n="Tables">Leaderboard Results</div>
                     </a>
@@ -165,17 +165,17 @@
                     </a>
                     <ul class="menu-sub">
                         <li class="menu-item">
-                            <a href="/account_settings_account" class="menu-link">
+                            <a href="/account_settings_account/${username}" class="menu-link">
                                 <div data-i18n="Account">Account</div>
                             </a>
                         </li>
                         <li class="menu-item">
-                            <a href="/account_settings_notify" class="menu-link">
+                            <a href="/account_settings_notify/${username}" class="menu-link">
                                 <div data-i18n="Notifications">Notifications</div>
                             </a>
                         </li>
                         <li class="menu-item">
-                            <a href="/account_settings_conn" class="menu-link">
+                            <a href="/account_settings_conn/${username}" class="menu-link">
                                 <div data-i18n="Connections">Connections</div>
                             </a>
                         </li>
@@ -270,8 +270,8 @@
                                                 </div>
                                             </div>
                                             <div class="flex-grow-1">
-                                                <span class="fw-semibold d-block">John Doe</span>
-                                                <small class="text-muted">Admin</small>
+                                                <span class="fw-semibold d-block">${username}</span>
+                                                <small class="text-muted"></small>
                                             </div>
                                         </div>
                                     </a>

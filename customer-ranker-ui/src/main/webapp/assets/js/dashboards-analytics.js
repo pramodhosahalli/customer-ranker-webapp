@@ -362,6 +362,7 @@
     profileReportChartConfig = {
       chart: {
         height: 80,
+        labels: ['Past Ranks'],
         // width: 175,
         type: 'line',
         toolbar: {
@@ -390,11 +391,12 @@
         enabled: false
       },
       stroke: {
-        width: 5
+        width: 8
       },
       series: [
         {
-          data: [12, 105, 35, 78, 15, 69,100,120]
+          name : ['Past Ranks'],
+          data: [17, 31, 28, 17, 21]
         }
       ],
       xaxis: {
@@ -473,9 +475,9 @@
                 show: true,
                 fontSize: '0.6125rem',
                 color: axisColor,
-                label: 'Weekly Increase',
+                label: 'Monthly Increase',
                 formatter: function (w) {
-                  return '45%';
+                  return '14%';
                 }
               }
             }
@@ -495,7 +497,7 @@
       series: [
         {
           name : "Songs Listened",
-          data: [14, 17, 12, 22, 13, 16, 7, 13]
+          data: [14, 17, 12, 7, 8, 16, 23]
         }
       ],
       chart: {
@@ -527,7 +529,7 @@
             fillColor: config.colors.white,
             seriesIndex: 0,
             dataPointIndex: 7,
-            strokeColor: config.colors.primary,
+            strokeColor: config.colors.success,
             strokeWidth: 2,
             size: 6,
             radius: 8
@@ -537,7 +539,7 @@
           size: 7
         }
       },
-      colors: [config.colors.primary],
+      colors: [config.colors.success],
       fill: {
         type: 'gradient',
         gradient: {
@@ -559,7 +561,7 @@
         }
       },
       xaxis: {
-        categories: ['', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+        categories: ['Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
         axisBorder: {
           show: false
         },
